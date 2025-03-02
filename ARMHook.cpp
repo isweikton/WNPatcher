@@ -56,7 +56,7 @@ void ARMHook::writeMem(uintptr_t dest, uintptr_t src, size_t size) {
 #elif defined(IS_ARM64)
     __clear_cache((void*)dest, (void*)(dest + size));
 #else
-    __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Unsupported architecture!"));
+    AndroidLog("Unsupported architecture!");
 #endif
 }
 
@@ -66,7 +66,7 @@ void ARMHook::makeRet(uintptr_t dest) {
 #elif defined(IS_ARM64)
     ARMHook::writeMem(dest, (uintptr_t)"\xC0\x03\x5F\xD6", 4); // RET (ARM64)
 #else
-    __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Unsupported architecture!"));
+    AndroidLog("Unsupported architecture!");
 #endif
 }
 
@@ -87,7 +87,7 @@ void ARMHook::makeNOP(uintptr_t addr, unsigned int count) {
         *(uint32_t*)ptr = 0xD503201F; // NOP (ARM64)
     }
 #else
-    __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Unsupported architecture!"));
+    AndroidLog("Unsupported architecture!");
 #endif 
 }
 
@@ -100,7 +100,7 @@ void ARMHook::writeMemHookProc(uintptr_t addr, uintptr_t func) {
     memcpy(code, HOOK_PROC_ARM64, 16);
     *(uint64_t*)&code[8] = func; // 64-bit address
 #else
-    __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Unsupported architecture!"));
+    AndroidLog("Unsupported architecture!");
 #endif     
     ARMHook::writeMem(addr, (uintptr_t)code, 16);
 }
@@ -150,7 +150,7 @@ void ARMHook::JMPCode(uintptr_t func, uintptr_t addr) {
         local_trampoline += 16; // Update trampoline pointer
     }
 #else
-    __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Unsupported architecture!"));
+    AndroidLog("Unsupported architecture!");
 #endif    
 }
 
@@ -229,6 +229,6 @@ void ARMHook::injectCode(uintptr_t addr, uintptr_t func, int reg) {
     injectCode[3] = (uint32_t)(func & 0xFFFFFFFF);
     ARMHook::writeMem(addr, (uintptr_t)injectCode, 16);
 #else
-    __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Unsupported architecture!"));
+    AndroidLog("Unsupported architecture!");
 #endif
 }

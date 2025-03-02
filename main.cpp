@@ -58,22 +58,22 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved)
 	{ 
         g_pAPKPackage = mEnv->GetStringUTFChars(GetPackageName(mEnv, appContext), NULL);
 
-        char sea_of_feelings[100+1];
-		sprintf(sea_of_feelings, OBFUSCATE("Package: %s"), g_pAPKPackage);
+        char the_end_of_the_world[0xFF];
+		sprintf(the_end_of_the_world, OBFUSCATE("Package: %s"), g_pAPKPackage);
 
-		__android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Powered by Weikton"));
-		__android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), sea_of_feelings);
+		AndroidLog("Powered by Weikton");
+		__android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), the_end_of_the_world);
 #ifdef IS_ARM32 
-		__android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Arch: x32"));
+		AndroidLog("Arch: x32");
 #elif defined(IS_ARM64)
-		__android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Arch: x64"));
+		AndroidLog("Arch: x64");
 #endif
     }
     
 	g_libGTASA = ARMHook::getLibraryAddress(OBFUSCATE("libGTASA.so"));
 	if(g_libGTASA)
 	{
-		__android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE("Install..."));
+		AndroidLog("Install...");
 		WN(); // <<<
 	}
 

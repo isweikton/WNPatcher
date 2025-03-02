@@ -31,3 +31,5 @@ unsigned long pack(const char* enter);
 int decPACK(const char* enter);
 #define pack(a) pack(OBFUSCATE(a))
 #define decPACK(a) decPACK(OBFUSCATE("a"))
+
+#define AndroidLog(a) __android_log_write(ANDROID_LOG_INFO, OBFUSCATE("WNPatch"), OBFUSCATE(a));
