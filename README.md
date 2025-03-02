@@ -13,7 +13,7 @@
 > ** SA:MP support: +
 
 # Разработки \ Credit's
-> - [0xcds4r](https://github.com/0xcds4r) ([ARMHook](https://github.com/0xcds4r/ARMHook))
+> - [**0xcds4r**](https://github.com/0xcds4r) ([upgraded ***ARMHook*** by me](https://github.com/0xcds4r/ARMHook))
 
 # Скачать готовые плагины можно будет в моем профиле GitHub \ You can download ready-made plugins in my GitHub profile
 ![wn](https://i.imgur.com/6lxcLHi.png)
