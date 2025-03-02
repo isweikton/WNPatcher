@@ -15,7 +15,10 @@
 #include "str_obfuscate.hpp"
 
 extern uintptr_t g_libGTASA;
-#define SA_ADDR(addr) (g_libGTASA + (addr))
+#define GTA(a) (g_libGTASA + (a))
+
+extern uintptr_t g_libSAMP;
+#define SAMP(b) (g_libSAMP + (b))
 
 extern const char* g_pAPKPackage;
 extern JavaVM *mVm;

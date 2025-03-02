@@ -2,32 +2,46 @@
 #include "jniutil.h"
 
 uintptr_t g_libGTASA = 0;
+uintptr_t g_libSAMP = 0;
 const char* g_pAPKPackage;
 
 jobject appContext;
 JavaVM *mVm;
 JNIEnv *mEnv;
 
-void WN() 
+void WNGTA() 
 {
 #ifdef IS_ARM64
-	toasty(OBFUSCATE("[WNPatch]: Install for x64"));
+	toasty(OBFUSCATE("[WNPatch]: Install GTA Modification's for x64"));
 
 	// 2.10 x64
-	// ARMHook::NOP(g_libGTASA + 0x4D8EB8, 2);
+	// ARMHook::NOP(GTA(0x4D8EB8), 2);
 #elif defined(IS_ARM32)
-    toasty(OBFUSCATE("[WNPatch]: Install for x32"));
+    toasty(OBFUSCATE("[WNPatch]: Install GTA Modification's for x32"));
 
 	// 1.08
-    // ARMHook::makeNOP(g_libGTASA + 0x39B1E4, 2);
+    // ARMHook::makeNOP(GTA(0x39B1E4), 2);
 
 	// 2.01
-	// ARMHook::makeNOP(g_libGTASA + 0x3F6942, 2);
+	// ARMHook::makeNOP(GTA(0x3F6942), 2);
 
 	// 2.10
-	ARMHook::NOP(g_libGTASA + 0x3F6992, 2);
+	// ARMHook::NOP(GTA(0x3F6992), 2);
 #endif
-}         
+}
+
+void WNSAMP()
+{
+#ifdef IS_ARM64
+	toasty(OBFUSCATE("[WNPatch]: Install SAMP Modification's for x64"));
+
+	// ARMHook::NOP(SAMP(0x0), 2);
+#elif defined(IS_ARM32)
+    toasty(OBFUSCATE("[WNPatch]: Install SAMP Modification's for x32"));
+
+	// ARMHook::NOP(SAMP(0x0), 2);
+#endif
+}
 
 JNIEnv *getEnv() 
 {
@@ -71,10 +85,23 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved)
     }
     
 	g_libGTASA = ARMHook::getLibraryAddress(OBFUSCATE("libGTASA.so"));
+	if(!g_libGTASA) 
+		g_libGTASA = ARMHook::getLibraryAddress(OBFUSCATE("libGAME.so"));
 	if(g_libGTASA)
 	{
-		AndroidLog("Install...");
-		WN(); // <<<
+		AndroidLog("Install GTA...");
+		WNGTA(); // <<<
+	}
+
+	g_libSAMP = ARMHook::getLibraryAddress(OBFUSCATE("libsamp.so"));
+	if(!g_libSAMP)
+		g_libSAMP = ARMHook::getLibraryAddress(OBFUSCATE("libmultiplayer.so"));
+	if(!g_libSAMP)
+		g_libSAMP = ARMHook::getLibraryAddress(OBFUSCATE("libsampvoice.so"));
+	if(g_libSAMP)
+	{
+		AndroidLog("Install SAMP...");
+		WNSAMP(); // <<<
 	}
 
 	return JNI_VERSION_1_6;
