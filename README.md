@@ -16,7 +16,7 @@
 > - [**`0xcds4r`**](https://github.com/0xcds4r) ([upgraded ***`ARMHook`*** by me](https://github.com/0xcds4r/ARMHook))
 
 # ᐳ Соц. сети \ Social
-[![Telegram](https://img.shields.io/badge/-Telegram-090909?style=for-the-badge&logo=telegram&logoColor=27A0D9)](https://t.me/weikton_official)
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/weikton_official)
 [![Vkontakte](https://img.shields.io/badge/-Vkontakte-090909?style=for-the-badge&logo=Vk&logoColor=4F7DB3)](https://vk.com/weikton)
 [![YouTube](https://img.shields.io/badge/-YouTube-090909?style=for-the-badge&logo=YouTube&logoColor=FF0000)](https://www.youtube.com/weikton)
 
