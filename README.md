@@ -8,7 +8,7 @@
 > * SA:MP support: `+`
 
 # ᐳ Разработки \ Credit's
-> - [**`Gloss`**](https://github.com/0xcds4r) ([inited for ***`.mk`*** project by me]([https://github.com/0xcds4r/ARMHook](https://github.com/XMDS/GlossHook)))
+> - [**`Gloss`**](https://github.com/XMDS/GlossHook) ([inited for ***`.mk`*** project by me]([https://github.com/XMDS/GlossHook](https://github.com/XMDS/GlossHook)))
 
 # ᐳ Соц. сети \ Social
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/weikton_official)
